@@ -38,14 +38,16 @@
     },
     computed: {
       name: function () {
+        if (this.isDirectory) {
+          return directoryIcon;
+        }
         let separatorIdx = this.filename.lastIndexOf('.');
-        console.log(separatorIdx)
         if (separatorIdx < 0) {
           return unknownIcon;
         }
         let suffix = this.filename.substring(separatorIdx, this.filename.length).toLowerCase();
         let type = suffixTypeConfig.get(suffix);
-        return this.isDirectory ? directoryIcon : (type == null ? unknownIcon : type);
+        return type == null ? unknownIcon : type;
       }
     },
     components: {
