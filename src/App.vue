@@ -1,18 +1,16 @@
 <template>
   <div id="app">
-    <svg-icon name="file-word" />
-    <svg-icon name="file-mp3" />
-    <svg-icon name="file-directory" />
+    <file-icon filename="test.txt" />
   </div>
 </template>
 
 <script>
-import SvgIcon from "@/components/SvgIcon";
+  import FileIcon from "@/components/FileIcon";
 
-export default {
+  export default {
   name: "App",
   components: {
-    SvgIcon,
+    FileIcon
   },
 };
 </script>
