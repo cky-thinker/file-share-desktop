@@ -41,7 +41,7 @@ export default {
     })
   },
   zip(url, name) {
-    var url = baseURL + url
+    url = baseURL + url
     console.log(url)
     axios({
       method: 'get',

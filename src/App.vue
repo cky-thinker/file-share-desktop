@@ -1,19 +1,8 @@
 <template>
   <div id="app">
-    <file-icon filename="test.mp3" />
+    <router-view/>
   </div>
 </template>
-
-<script>
-  import FileIcon from "@/components/FileIcon";
-
-  export default {
-  name: "App",
-  components: {
-    FileIcon
-  },
-};
-</script>
 
 <style>
 #app {
@@ -22,6 +11,5 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

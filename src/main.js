@@ -12,6 +12,8 @@ import './assets/icons' // svg icon
 // 通用组件
 import FileIcon from "@/components/FileIcon"
 
+import router from './router'
+
 Vue.component("file-icon", FileIcon);
 
 Vue.use(plugins)
@@ -20,5 +22,6 @@ Vue.use(Element)
 Vue.config.productionTip = false;
 
 new Vue({
-  render: (h) => h(App),
+  router,
+  render: (h) => h(App)
 }).$mount("#app");
