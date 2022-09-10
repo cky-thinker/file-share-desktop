@@ -13,8 +13,9 @@
         <el-button plain icon="el-icon-upload2" size="mini" style="margin-right: 16px"></el-button>
         <el-button plain icon="el-icon-message" size="mini"></el-button>
       </div>
-      <div>
+      <div style="padding-left: 16px; padding-right: 16px">
         <el-table
+          :max-height="listHeight"
           :show-header="false"
           :data="files">
           <el-table-column width="50">
@@ -26,7 +27,7 @@
           </el-table-column>
           <el-table-column prop="name">
           </el-table-column>
-          <el-table-column width="120">
+          <el-table-column width="70">
             <template slot-scope="scope">
               <el-button v-if="scope.row.type === 'file'" @click="console.log(scope)" icon="el-icon-download"
                          size="mini" plain></el-button>
@@ -52,9 +53,23 @@
           {name: 'test.txt', type: 'file'},
           {name: 'test.doc', type: 'file'},
           {name: 'test.ppt', type: 'file'},
+          {name: 'test.ppt', type: 'file'},
+          {name: 'test.ppt', type: 'file'},
+          {name: 'test.ppt', type: 'file'},
+          {name: 'test.ppt', type: 'file'},
+          {name: 'test.ppt', type: 'file'},
+          {name: 'test.ppt', type: 'file'},
+          {name: 'test.ppt', type: 'file'},
+          {name: 'test.ppt', type: 'file'},
+          {name: 'test.ppt', type: 'file'},
           {name: '文件夹1', type: 'directory'},
           {name: 'fasdfasdfasdfasfassdfa', type: 'text', content: 'fasdfasdfasdfasfassdfa'}
         ]
+      }
+    },
+    computed: {
+      listHeight() {
+        return window.innerHeight - 260;
       }
     },
     components: {
@@ -65,10 +80,27 @@
 <style lang="scss" scoped>
   @import '../assets/font/DancingScript.css';
 
+  .body {
+    max-width: 750px;
+    margin: 0 auto;
+  }
+  .header {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .header .overlay {
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+    padding: 8px;
+    color: #FFF;
+  }
+
   h1 {
     font-family: 'DancingScript', cursive;
     font-size: 60px;
     margin-bottom: 15px;
+    margin-top: 8px;
   }
 
   h3 {
@@ -83,24 +115,6 @@
     font-weight: bold;
   }
 
-  .body {
-    max-width: 750px;
-    margin: 0 auto;
-  }
-
-  .header {
-    text-align: center;
-    margin-bottom: 46px;
-  }
-
-  .header .overlay {
-    width: 100%;
-    margin: 0 auto;
-    height: 100%;
-    padding: 8px;
-    color: #FFF;
-  }
-
   .button-group {
     margin-bottom: 32px;
   }
@@ -112,15 +126,16 @@
   }
 
   .file-list {
+    width: 95%;
+    margin: 0 auto;
+  }
+  /** ------- pc端 --------- **/
+  @media only screen and (min-width: 500px) {
 
   }
-  .file-list-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
 
-  .file-list-operation {
+  /** ------- 移动端 ---------- **/
+  @media only screen and (max-width: 500px) {
 
   }
 </style>
