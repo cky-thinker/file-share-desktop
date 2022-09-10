@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <file-icon filename="test.txt" />
+    <file-icon filename="test.mp3" />
   </div>
 </template>
 
