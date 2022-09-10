@@ -1,44 +1,17 @@
 <template>
-  <div
-    :style="styleExternalIcon"
-    class="svg-external-icon svg-icon"
-    v-on="$listeners"
-  >
-    <svg :class="svgClass" aria-hidden="true" v-on="$listeners">
-      <use :xlink:href="iconName" />
-    </svg>
-  </div>
+  <svg class="svg-icon" aria-hidden="true">
+    <use :xlink:href="`#icon-${name}`" />
+  </svg>
 </template>
 
 <script>
 export default {
   name: "SvgIcon",
   props: {
-    iconClass: {
+    name: {
+      // svg文件名称
       type: String,
       required: true,
-    },
-    className: {
-      type: String,
-      default: "",
-    },
-  },
-  computed: {
-    iconName() {
-      return `#icon-${this.iconClass}`;
-    },
-    svgClass() {
-      if (this.className) {
-        return "svg-icon " + this.className;
-      } else {
-        return "svg-icon";
-      }
-    },
-    styleExternalIcon() {
-      return {
-        mask: `url(/icons/svg/${this.iconClass}) no-repeat 50% 50%`,
-        "-webkit-mask": `url(/icons/svg/${this.iconClass}.svg) no-repeat 50% 50%`,
-      };
     },
   },
 };
@@ -46,16 +19,10 @@ export default {
 
 <style scoped>
 .svg-icon {
-  width: 1em;
-  height: 1em;
+  width: 2em;
+  height: 2em;
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
-}
-
-.svg-external-icon {
-  background-color: currentColor;
-  mask-size: cover !important;
-  display: inline-block;
 }
 </style>

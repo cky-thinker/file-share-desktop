@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <SvgIcon iconClass="file-directory" />
-    <SvgIcon iconClass="file-excel" />
+    <svg-icon name="file-word" />
+    <svg-icon name="file-mp3" />
+    <svg-icon name="file-directory" />
   </div>
 </template>
 
