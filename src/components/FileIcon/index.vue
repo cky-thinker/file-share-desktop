@@ -43,7 +43,7 @@
         if (separatorIdx < 0) {
           return unknownIcon;
         }
-        let suffix = this.filename.substring(separatorIdx, this.filename.length);
+        let suffix = this.filename.substring(separatorIdx, this.filename.length).toLowerCase();
         let type = suffixTypeConfig.get(suffix);
         return this.isDirectory ? directoryIcon : (type == null ? unknownIcon : type);
       }
