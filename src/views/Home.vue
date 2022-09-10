@@ -10,14 +10,16 @@
     <el-card class="file-list">
       <div slot="header" class="clearfix">
         <span style="margin-right: 32px">文件列表</span>
-        <el-button plain icon="el-icon-upload2" size="mini" style="margin-right: 16px"></el-button>
-        <el-button plain icon="el-icon-message" size="mini"></el-button>
+        <el-button @click="submitFileVisible= true" plain icon="el-icon-upload2" size="mini" style="margin-right: 16px"></el-button>
+        <el-button @click="submitMsgVisible= true" plain icon="el-icon-message" size="mini"></el-button>
       </div>
       <div style="padding-left: 16px; padding-right: 16px">
         <el-table
           :max-height="listHeight"
           :show-header="false"
-          :data="files">
+          :data="files"
+          row-key="id"
+        >
           <el-table-column width="50">
             <template slot-scope="scope">
               <file-icon v-if="scope.row.type === 'file'" :filename="scope.row.name"/>
@@ -38,6 +40,33 @@
         </el-table>
       </div>
     </el-card>
+    <el-dialog
+      title="上传文件"
+      customClass="dialog"
+      :visible.sync="submitFileVisible">
+      <div style="display: flex; justify-content: center">
+        <el-upload
+          drag
+          action="https://jsonplaceholder.typicode.com/posts/">
+          <i class="el-icon-upload"></i>
+          <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+        </el-upload>
+      </div>
+    </el-dialog>
+    <el-dialog
+      title="上传文本"
+      customClass="dialog"
+      :visible.sync="submitMsgVisible">
+      <el-form ref="form" :model="msgForm" label-width="80px">
+        <el-form-item label="文本内容">
+          <el-input type="textarea" :rows="5" v-model="msgForm.msg"></el-input>
+        </el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="submitMsgVisible = false">取 消</el-button>
+        <el-button type="primary" @click="submitMsgVisible = false">提 交</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -45,29 +74,52 @@
   import FileIcon from "@/components/FileIcon";
   import SvgIcon from "@/components/SvgIcon";
 
+  let id = 1;
+
+  function getId() {
+    return id++;
+  }
+
   export default {
     name: 'HomeView',
     data() {
       return {
+        submitFileVisible: false,
+        fileForm: {
+
+        },
+        submitMsgVisible: false,
+        msgForm: {
+          msg: ''
+        },
         files: [
-          {name: 'test.txt', type: 'file'},
-          {name: 'test.doc', type: 'file'},
-          {name: 'test.ppt', type: 'file'},
-          {name: 'test.ppt', type: 'file'},
-          {name: 'test.ppt', type: 'file'},
-          {name: 'test.ppt', type: 'file'},
-          {name: 'test.ppt', type: 'file'},
-          {name: 'test.ppt', type: 'file'},
-          {name: 'test.ppt', type: 'file'},
-          {name: 'test.ppt', type: 'file'},
-          {name: 'test.ppt', type: 'file'},
-          {name: 'test.ppt', type: 'file'},
-          {name: '文件夹1', type: 'directory'},
-          {name: 'fasdfasdfasdfasfassdfa', type: 'text', content: 'fasdfasdfasdfasfassdfa'}
+          {id: getId(), name: '文件夹', type: 'directory', hasChildren: true},
+          {id: getId(), name: 'test.txt', type: 'file'},
+          {id: getId(), name: 'test.doc', type: 'file'},
+          {id: getId(), name: 'test.ppt', type: 'file'},
+          {id: getId(), name: 'test.ppt', type: 'file'},
+          {id: getId(), name: 'fasdfasdfasdfasfassdfa', type: 'text', content: 'fasdfasdfasdfasfassdfa'}
         ]
       }
     },
+    methods: {
+      listFiles(tree, treeNode, resolve) {
+        setTimeout(() => {
+          console.log(tree, treeNode)
+          resolve([
+            {id: getId(), name: 'test.ppt', type: 'file'},
+            {id: getId(), name: '文件夹', type: 'directory', hasChildren: true},
+          ])
+        }, 200)
+      },
+
+    },
     computed: {
+      dialogWidth() {
+        let width = window.innerWidth > 500 ? Math.min(window.innerWidth * 0.5, 700) : window.innerWidth * 0.95;
+        console.log(width)
+        return String(width);
+      },
       listHeight() {
         return window.innerHeight - 260;
       }
@@ -77,17 +129,19 @@
     },
   }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
   @import '../assets/font/DancingScript.css';
 
   .body {
     max-width: 750px;
     margin: 0 auto;
   }
+
   .header {
     text-align: center;
     margin-bottom: 16px;
   }
+
   .header .overlay {
     width: 100%;
     margin: 0 auto;
@@ -126,9 +180,22 @@
   }
 
   .file-list {
+    max-width: 750px;
     width: 95%;
     margin: 0 auto;
   }
+
+  .dialog {
+    max-width: 700px;
+    width: 95%;
+  }
+
+  .cell {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
   /** ------- pc端 --------- **/
   @media only screen and (min-width: 500px) {
 
