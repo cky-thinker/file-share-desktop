@@ -1,4 +1,5 @@
 .idea/
 .dist/
 node_modules/
-electron/page/
+electron/page_app/
+electron/preload/page_web/

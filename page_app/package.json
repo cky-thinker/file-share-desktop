@@ -3,9 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "export NODE_ENV='development' &&vue-cli-service serve",
-    "build:desktop:mac": "export NODE_ENV='production' && vue-cli-service build && rm -rf ../electron/page_app && mv dist ../electron/page_app",
-    "build:desktop:win": "set NODE_ENV='production' && vue-cli-service build && rm -rf ../electron/page_app && mv dist ../electron/page_app",
+    "dev": "cross-env NODE_ENV='development' && vue-cli-service serve",
+    "build": "cross-env NODE_ENV='production' && vue-cli-service build && rm -rf ../electron/page_app && mv dist ../electron/page_app",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -21,6 +20,7 @@
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0",
     "babel-eslint": "^10.1.0",
+    "cross-env": "^7.0.3",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0",
     "vue-cli-plugin-element-plus": "~0.0.13"

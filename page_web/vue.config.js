@@ -5,7 +5,7 @@ function resolve(dir) {
   return path.join(__dirname, dir);
 }
 
-const name = process.env.VUE_APP_TITLE || "file-share 文件共享"; // 网页标题
+const name = "file-share 文件共享"; // 网页标题
 
 const port = process.env.port || process.env.npm_config_port || 8000; // 端口
 
@@ -32,13 +32,11 @@ module.exports = {
       },
     }
   },
-  configureWebpack: {
-    name: name,
-    resolve: {
-      alias: {
-        "@": resolve("src"),
-      },
-    },
+  pages: {
+    index: {
+      entry: 'src/main.js', // 入口文件
+      title: name
+    }
   },
   transpileDependencies: true,
   chainWebpack(config) {
@@ -47,6 +45,8 @@ module.exports = {
 
     // set svg-sprite-loader
     config.module.rule("svg").exclude.add(resolve("src/assets/icons")).end();
+    // resolve @
+    config.resolve.alias.set('@', resolve('src'));
 
     config.module
       .rule("icons")

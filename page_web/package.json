@@ -3,9 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "vue-cli-service serve",
-    "build:desktop:mac": "export NODE_ENV='production' && vue-cli-service build && rm -rf ../electron/preload/page_web && mv dist ../electron/preload/page_web",
-    "build:desktop:win": "set NODE_ENV='production' && vue-cli-service build && rm -rf ../electron/preload/page_web && mv dist ../electron/preload/page_web",
+    "dev": "cross-env NODE_ENV='development' && vue-cli-service serve",
+    "build": "cross-env NODE_ENV='production' && vue-cli-service build && rm -rf ../electron/preload/page_web && mv dist ../electron/preload/page_web",
     "lint": "vue-cli-service lint"
   },
   "main": "background.js",
@@ -26,6 +25,7 @@
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-plugin-router": "^5.0.8",
     "@vue/cli-service": "~5.0.0",
+    "cross-env": "^7.0.3",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
     "node-sass": "^7.0.3",
