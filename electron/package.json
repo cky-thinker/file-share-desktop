@@ -4,25 +4,7 @@
   "description": "文件共享",
   "main": "main.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV='dev' && electron .",
-    "pack": "electron-builder --dir"
-  },
-  "build": {
-    "productName": "文件共享工具",
-    "appId": "tk.ckyspace.fileShare",
-    "win": {
-      "icon": "public/favicon.ico",
-      "artifactName": "${productName}-${platform}-${arch}-${version}.${ext}",
-      "target": [
-        {
-          "target": "nsis",
-          "arch": [
-            "x64"
-          ]
-        }
-      ]
-    },
-    "copyright": "Copyright © year ${author}"
+    "dev": "cross-env NODE_ENV='dev' && electron ."
   },
   "author": "宇的季节",
   "license": "ISC",
