@@ -18,9 +18,8 @@ let onPluginOut = function (callback) {
 let onPluginReady = function (callback) {
 
 }
-export default {
-    dbStorage,
-    onPluginEnter,
-    onPluginOut,
-    onPluginReady
-}
+
+exports.dbStorage = dbStorage
+exports.onPluginEnter = onPluginEnter
+exports.onPluginOut = onPluginOut
+exports.onPluginReady = onPluginReady

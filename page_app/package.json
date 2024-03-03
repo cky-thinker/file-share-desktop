@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "export NODE_ENV='development' &&vue-cli-service serve",
-    "build:desktop:mac": "export NODE_ENV='production' && vue-cli-service build && rm -rf ../electron/page/app && mv dist ../electron/page/app",
-    "build:desktop:win": "set NODE_ENV='production' && vue-cli-service build && rm -rf ../electron/page/app && mv dist ../electron/page/app",
+    "build:desktop:mac": "export NODE_ENV='production' && vue-cli-service build && rm -rf ../electron/page_app && mv dist ../electron/page_app",
+    "build:desktop:win": "set NODE_ENV='production' && vue-cli-service build && rm -rf ../electron/page_app && mv dist ../electron/page_app",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

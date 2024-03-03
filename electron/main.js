@@ -1,7 +1,8 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, Menu } = require('electron')
 const path = require('node:path')
 
 const createWindow = () => {
+    Menu.setApplicationMenu(null)
     const win = new BrowserWindow({
         width: 800,
         height: 600,
@@ -15,8 +16,9 @@ const createWindow = () => {
         }
     })
 
-    win.loadFile('app/index.html').then(() => {
+    win.loadFile('page_app/index.html').then(() => {
         console.log("load success!")
+        win.webContents.openDevTools()
     })
 }
 

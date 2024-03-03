@@ -111,8 +111,8 @@ const initApp = () => {
     app.use(cookieParser());
     app.all("/api/*", authFilter);
     // TODO 路径确定
-    let rootPath = path.resolve(__dirname, '../page')
-    app.use(express.static(path.join(rootPath, 'web'), {index: 'index.html'}))
+    let rootPath = path.resolve(__dirname, '..')
+    app.use(express.static(path.join(rootPath, 'page_web'), {index: 'index.html'}))
     // file list
     app.get('/api/files', function (req, res) {
         let path = req.query.path
