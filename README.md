@@ -4,7 +4,7 @@
 ### file-share的诞生就是终结这个噩梦！
 
 #### 优点
-下载速度：带宽直接打满，支持断点续传，结合Neat Download Manager之类的多线程下载器，下载速度完全取决于你的路由器和电脑有多强，下载速度就有多快！
+下载速度：带宽直接打满，支持断点续传，结合Neat Download Manager、Free Download Manager之类的多线程下载器，下载速度完全取决于你的路由器和电脑有多强，下载速度就有多快！
 
 跨平台：支持Windows，MacOS，Linux等，Android，IOS等移动端可以通过网页上传或下载文件
 
