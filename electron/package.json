@@ -1,0 +1,14 @@
+{
+  "name": "file-share-desktop",
+  "version": "1.0.0",
+  "description": "文件共享",
+  "main": "main.js",
+  "scripts": {
+    "dev": "electron ."
+  },
+  "author": "宇的季节",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^27.1.0"
+  }
+}
