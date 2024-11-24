@@ -7,7 +7,6 @@ on:
 
 jobs:
   unix:
-    if: ${{ github.event.base_ref == 'refs/heads/master' }}
     runs-on: ${{ matrix.os }}
     continue-on-error: false
     timeout-minutes: 45
@@ -140,7 +139,6 @@ jobs:
             electron/build/fileshare-mac-x64.dmg
 
   windows:
-    if: ${{ github.event.base_ref == 'refs/heads/master' }}
     runs-on: windows-latest
     continue-on-error: false
     timeout-minutes: 45
